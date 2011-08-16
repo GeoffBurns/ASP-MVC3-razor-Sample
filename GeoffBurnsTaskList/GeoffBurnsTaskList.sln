@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoffBurnsTaskList", "GeoffBurnsTaskList\GeoffBurnsTaskList.csproj", "{57F1DE9B-53C7-4938-8943-D366F09957B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoffBurnsTaskList.Models", "GeoffBurnsTaskList.Models\GeoffBurnsTaskList.Models.csproj", "{47646A7E-0274-4953-A447-ACFFD9F96D88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoffBurnsTaskList.Models.Test", "GeoffBurnsTaskList.Models.Test\GeoffBurnsTaskList.Models.Test.csproj", "{67540B37-C60D-45B9-8DB3-FB629BCF5FD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57F1DE9B-53C7-4938-8943-D366F09957B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F1DE9B-53C7-4938-8943-D366F09957B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F1DE9B-53C7-4938-8943-D366F09957B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F1DE9B-53C7-4938-8943-D366F09957B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47646A7E-0274-4953-A447-ACFFD9F96D88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47646A7E-0274-4953-A447-ACFFD9F96D88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47646A7E-0274-4953-A447-ACFFD9F96D88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47646A7E-0274-4953-A447-ACFFD9F96D88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67540B37-C60D-45B9-8DB3-FB629BCF5FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67540B37-C60D-45B9-8DB3-FB629BCF5FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67540B37-C60D-45B9-8DB3-FB629BCF5FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67540B37-C60D-45B9-8DB3-FB629BCF5FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

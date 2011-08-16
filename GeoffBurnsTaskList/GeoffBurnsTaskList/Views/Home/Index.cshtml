@@ -1,0 +1,82 @@
+﻿@model GeoffBurnsTaskList.Models.ITaskListModel
+
+@{
+    ViewBag.Title = "Task Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model.AreTasksDue)
+{
+    <h2>Tasks are due today</h2>
+    <table class="tablesorter">
+<thead> 
+    <tr>
+        <th>Task</th>
+        <th>Priority</th>
+        <th>Status</th>
+    </tr>
+</thead>
+
+@foreach (var item in Model.TodaysTask)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Task)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueStatus)
+        </td>
+    </tr>
+}
+
+</table>
+}
+
+<p>
+    @Html.ActionLink("Add New Task", "Create")
+</p>
+
+@if (Model.AreTasksDue)
+ {
+     <h2>List of All Tasks</h2>
+ }
+@if (Model.AllTasks.Any())
+{    
+<table class="tablesorter">
+<thead> 
+    <tr>
+        <th>Due Date</th>
+        <th>Task</th>
+        <th>Priority</th>
+    </tr>
+</thead>
+   
+
+@foreach (var item in Model.AllTasks)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Task)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.ActionLink("Remove All Tasks from List", "DeleteAll", "Home")
+}
+<script type="text/javascript">
+    $(function () {
+        $("table.tablesorter").tablesorter({ widthFixed: true, sortList: [[0, 0]] });
+    });
+</script>

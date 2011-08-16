@@ -1,0 +1,5 @@
+﻿@model PriorityStatus
+
+@using GeoffBurnsTaskList.Models
+
+@string.Format("{0}. {1}", (int)Model, Enum.GetName(typeof (PriorityStatus), Model))

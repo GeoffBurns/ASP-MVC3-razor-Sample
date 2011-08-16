@@ -1,0 +1,17 @@
+﻿@model PriorityStatus?
+
+@using System.Web.Mvc.Html
+@using GeoffBurnsTaskList.Models
+
+@*
+<select name="@ViewData.TemplateInfo.GetFullHtmlFieldName(string.Empty)">
+@foreach (var name in Enum.GetNames(typeof(PriorityStatus)))
+ {
+   <option id = "@name" value="@name">@name</option>
+ }
+</select>
+*@
+@{
+    var selected = Model.HasValue ? Enum.GetName(typeof(PriorityStatus), Model.Value) : "High";
+}
+@Html.DropDownList("",Enum.GetNames(typeof (PriorityStatus)).Select(p => new SelectListItem{ Selected = p.Equals(selected), Text = p, Value = p }))
