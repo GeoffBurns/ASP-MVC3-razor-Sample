@@ -7,39 +7,36 @@ namespace GeoffBurnsTaskList.Models.Test
 {
   
  [TestFixture]
-    class When_TaskList_Contains_Task_Due_Yesterday
+    class When_TaskList_Contains_Task_Due_Yesterday : When_TaskList_Contains_Task
     {
-        private IContainer _container;
 
         [SetUp]
         public void SetUp()
         {
-           _container = (IContainer)IoC.Initialize();
-            var mock = IoC.MockStore;
-            mock.Setup(s => s.GetItems()).Returns(new[] { new Commitment { DueDate = DateTime.Now.AddDays(-1) } });
+       
+            SetUp(Yesterday);
         }
+        
         [Test]
         public void Then_AreTaskDue_Should_be_True()
         {
             //Arrange
-            var taskList = _container.GetInstance<ITaskListModel>();
 
             //Act
             
             //Assert
-            Assert.That(taskList.AreTasksDue);
+            Assert.That(_taskListModel.AreTasksDue);
         }
         [Test]
         public void Then_TodaysTask_Should_Contain_Task_Overdue()
         {
             //Arrange
-            var taskList = _container.GetInstance<ITaskListModel>();
 
             //Act
 
             //Assert
-            Assert.That(taskList.TodaysTask.Any());
-            Assert.That(taskList.TodaysTask.Any(dt => dt.DueStatus.Equals("Overdue")));
+            Assert.That(_taskListModel.TodaysTask.Any());
+            Assert.That(_taskListModel.TodaysTask.Any(dt => dt.DueStatus.Equals("Overdue")));
 
         }
 

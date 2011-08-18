@@ -8,48 +8,57 @@ namespace GeoffBurnsTaskList.Models.Test
     class When_TaskList_is_Empty
     {
         private IContainer _container;
+        private ITaskListModel _taskListModel;
+        private IRepository<Commitment> _repo;
 
         [SetUp]
         public void SetUp()
         {
-           _container = (IContainer)IoC.Initialize();
+           _container = IoC.Initialize();
+           var mock = IoC.MockStore;
+           mock.Setup(s => s.GetItems()).Returns(Enumerable.Empty<Commitment>());
+
+           _repo = _container.GetInstance<IRepository<Commitment>>();
+           _taskListModel = _container.GetInstance<ITaskListModel>();
+
         }
         [Test]
         public void Then_AreTaskDue_Should_be_False()
         {
             //Arrange
-            var taskList = _container.GetInstance<ITaskListModel>();
 
             //Act
             
             //Assert
-            Assert.False(taskList.AreTasksDue);
+            Assert.False(_taskListModel.AreTasksDue);
         }
         [Test]
         public void Then_TodaysTask_Should_be_Empty()
         {
             //Arrange
-            var taskList = _container.GetInstance<ITaskListModel>();
 
             //Act
 
             //Assert
-            Assert.False(taskList.TodaysTask.Any());
+            Assert.False(_taskListModel.TodaysTask.Any());
         }
         [Test]
         public void And_New_Task_is_Added_Then_TodaysTask_Should_not_be_Empty()
         {
             //Arrange
 
-            var repo = _container.GetInstance<IRepository<Commitment>>();
-            var taskList = _container.GetInstance<ITaskListModel>();
-
             //Act
-            repo.Create(new Commitment());
+            _repo.Create(new Commitment());
 
             //Assert
-            Assert.That(taskList.TodaysTask.Any());
-            Assert.That(taskList.AreTasksDue);
+            Assert.That(_taskListModel.TodaysTask.Any());
+            Assert.That(_taskListModel.AreTasksDue);
         }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _repo.DeleteAll();
+    }
     }
 }
